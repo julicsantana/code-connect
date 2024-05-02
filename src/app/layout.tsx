@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Prompt } from "next/font/google";
 import "./globals.css";
 import { Aside } from "@/components/Aside";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const prompt = Prompt({
+  weight: ["400", "600"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Code Connect",
@@ -16,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body className={montserrat.className}>
+    <html lang="pt-br" className={prompt.className}>
+      <body>
         <div className="app-container">
           <Aside />
           {children}

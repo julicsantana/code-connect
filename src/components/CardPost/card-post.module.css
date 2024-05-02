@@ -1,0 +1,34 @@
+.article {
+  border-radius: 8px;
+  background: #171d1f;
+  max-width: 486px;
+  max-height: 431px;
+  color: #bcbcbc;
+  padding: 16px;
+}
+
+.header {
+  background: #848484;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.figure {
+  margin: 0;
+  padding: 24px;
+}
+
+.capa {
+  border-radius: 8px;
+}
+
+.section > p {
+  font-size: 16px;
+}
+
+.link {
+  color: #81fe88;
+  font-size: 18px;
+}
