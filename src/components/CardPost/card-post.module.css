@@ -1,5 +1,10 @@
+.cardLink {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .article {
-  width: 486px;
+  /* max-width: 486px; */
   border-radius: 8px;
   background: #171d1f;
 }
@@ -12,6 +17,12 @@
 
 .header figure {
   margin: 0;
+  position: relative;
+  min-height: 133px;
+}
+
+.capa {
+  border-radius: 8px;
 }
 
 .section {
