@@ -1,6 +1,19 @@
 .posts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* flex-wrap: wrap; */
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.link {
+  color: #81fe88;
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  justify-content: center;
   gap: 20px;
+  margin: 20px 0;
 }

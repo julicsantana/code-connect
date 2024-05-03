@@ -25,7 +25,7 @@ export const CardPost = ({ post }: { post: Post }) => {
           Ver Detalhes
         </Link>
       </section>
-      <footer>
+      <footer className={styles.footer}>
         <Avatar imageSrc={post.author.avatar} name={post.author.username} />
       </footer>
     </article>
