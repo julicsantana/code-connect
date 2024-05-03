@@ -1,29 +1,28 @@
 import { CardPost } from "@/components/CardPost";
-import posts from "./posts.json";
+import logger from "@/loggers";
 import Post from "@/models/Post";
+import styles from "./page.module.css";
 
-const post = {
-  id: 1,
-  cover:
-    "https://raw.githubusercontent.com/viniciosneves/code-connect-assets/main/posts/introducao-ao-react.png",
-  title: "Introdução ao React",
-  slug: "introducao-ao-react",
-  body: "Neste post, vamos explorar os conceitos básicos do React, uma biblioteca JavaScript para construir interfaces de usuário. Vamos cobrir componentes, JSX e estados.",
-  markdown:
-    "```javascript\nfunction HelloComponent() {\n  return <h1>Hello, world!</h1>;\n}\n```",
-  author: {
-    id: 101,
-    name: "Ana Beatriz",
-    username: "anabeatriz_dev",
-    avatar:
-      "https://raw.githubusercontent.com/viniciosneves/code-connect-assets/main/authors/anabeatriz_dev.png",
-  },
-};
+async function getAllPosts() {
+  try {
+    const response = await fetch("http://localhost:3042/posts");
+    if (!response.ok) throw new Error("Falha na rede");
 
-export default function Home() {
+    logger.info("Posts obtidos com sucesso!");
+    return response.json();
+  } catch (error: any) {
+    logger.error("Ops, alguma coisa ocorreu: " + error.message);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const posts = await getAllPosts();
   return (
-    <main>
-      <CardPost post={post} />
+    <main className={styles.posts}>
+      {posts?.map((post: Post) => (
+        <CardPost post={post} />
+      ))}
     </main>
   );
 }
