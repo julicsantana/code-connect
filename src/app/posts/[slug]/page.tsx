@@ -4,22 +4,26 @@ import logger from "@/loggers";
 import Post from "@/models/Post";
 import { CardPost } from "@/components/CardPost";
 import { CodePost } from "@/components/CodePost";
+import db from "../../../../prisma/db";
+import { redirect } from "next/navigation";
 
 async function getPostBySlug(slug: string) {
   try {
-    const response = await fetch(`http://localhost:3042/posts?slug=${slug}`);
-    if (!response.ok) {
-      throw new Error("Falha na rede");
+    const post: any = await db.post.findFirst({
+      include: {
+        author: true,
+      },
+      where: {
+        slug,
+      },
+    });
+
+    if (!post) {
+      throw new Error(`Post com o slug ${slug} não foi encontrado`);
     }
 
     logger.info("Post obtido com sucesso!");
 
-    const data = await response.json();
-    if (data.length == 0) {
-      return {};
-    }
-
-    const post = data[0];
     const processedContent = await remark().use(html).process(post.markdown);
     const contentHtml = processedContent.toString();
 
@@ -27,10 +31,15 @@ async function getPostBySlug(slug: string) {
 
     return post;
   } catch (error: any) {
-    logger.error("Ops, alguma coisa ocorreu: " + error.message);
-    return {};
+    logger.error("Falha ao obter o post com o slug: ", {
+      slug,
+      error,
+    });
   }
+
+  redirect("/not-found");
 }
+
 export default async function PagePost({
   params,
 }: {

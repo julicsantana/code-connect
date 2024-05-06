@@ -186,3 +186,25 @@
 {"level":"info","message":"Post obtido com sucesso!"}
 {"level":"info","message":"Post obtido com sucesso!"}
 {"level":"error","message":"Ops, alguma coisa ocorreu: fetch failed"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"level":"error","message":"Ops, alguma coisa ocorreu: Cannot read properties of null (reading 'markdown')"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-reactssss"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-reactssss"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-reactssss"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-reactssss"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-reactssss"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"introducao-ao-reactssss"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"gerenciamento-de-estado-com-reduxdc"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"gerenciamento-de-estado-com-reduxcd"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"gerenciamento-de-estado-com-reduxsd"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"level":"info","message":"Post obtido com sucesso!"}
+{"level":"info","message":"Post obtido com sucesso!"}
