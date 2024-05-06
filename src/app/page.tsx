@@ -5,11 +5,20 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import db from "../../prisma/db";
 
-async function getAllPosts(page: number) {
+async function getAllPosts(page: number, searchTerm: string) {
   try {
-    const perPage = 6;
+    const where: any = {};
+
+    if (searchTerm) {
+      where.title = {
+        contains: searchTerm,
+        mode: "insensitive",
+      };
+    }
+
+    const perPage = 4;
     const skip = (page - 1) * perPage;
-    const totalItems = await db.post.count();
+    const totalItems = await db.post.count({ where });
     const totalPages = Math.ceil(totalItems / perPage);
 
     const prev = page > 1 ? page - 1 : null;
@@ -18,6 +27,7 @@ async function getAllPosts(page: number) {
     const posts: any = await db.post.findMany({
       take: perPage,
       skip: skip,
+      where,
       orderBy: { createdAt: "desc" },
       include: {
         author: true,
@@ -42,10 +52,16 @@ async function getAllPosts(page: number) {
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { page: string };
+  searchParams: { page: string; q: string };
 }) {
   const currentPage = parseInt(searchParams?.page || "1");
-  const { data: posts, prev, next } = await getAllPosts(currentPage);
+  const searchTerm: string = searchParams?.q;
+
+  const {
+    data: posts,
+    prev,
+    next,
+  } = await getAllPosts(currentPage, searchTerm);
 
   return (
     <main>
@@ -56,12 +72,16 @@ export default async function Home({
       </div>
       <div className={styles.actions}>
         {prev && (
-          <Link className={styles.link} href={`/?page=${prev}`}>
+          <Link
+            className={styles.link}
+            href={{ pathname: "/", query: { page: prev, q: searchTerm } }}>
             Anterior
           </Link>
         )}
         {next && (
-          <Link className={styles.link} href={`/?page=${next}`}>
+          <Link
+            className={styles.link}
+            href={{ pathname: "/", query: { page: next, q: searchTerm } }}>
             Próxima
           </Link>
         )}
