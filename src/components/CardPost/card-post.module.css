@@ -1,6 +1,6 @@
 .cardLink {
-  text-decoration: none;
   cursor: pointer;
+  color: #81fe88;
 }
 
 .article {
@@ -55,11 +55,17 @@
   font-size: 15px;
 }
 
+.items {
+  display: flex;
+  gap: 16px;
+  text-align: center;
+}
+
 .footer {
   color: #706f6f;
   padding: 16px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: 15px;
 }

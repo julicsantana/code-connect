@@ -6,6 +6,7 @@ export default interface Post {
   body: string;
   markdown: string;
   author: Author;
+  likes: number;
 }
 
 export interface Author {

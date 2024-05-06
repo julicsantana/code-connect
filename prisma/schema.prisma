@@ -20,10 +20,11 @@ model User {
   username String @unique
   avatar String
   Post Post[]
+  comments Comment[]
 }
 
 model Post {
-  id Int @default(autoincrement())
+  id Int @default(autoincrement()) @unique
   cover String
   title String
   slug String @unique
@@ -33,4 +34,20 @@ model Post {
   updatedAt DateTime @updatedAt
   authorId Int
   author User @relation(fields: [authorId], references: [id])
+  comments Comment[]
+  likes Int @default(0)
+}
+
+model Comment {
+  id Int @default(autoincrement()) @unique
+  text String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId Int
+  author User @relation(fields: [authorId], references: [id])
+  postId Int
+  post Post @relation(fields: [postId], references: [id])
+  parentId Int?
+  parent Comment? @relation("CommentChildren", fields: [parentId], references: [id])
+  childrens Comment[] @relation("CommentChildren")
 }
