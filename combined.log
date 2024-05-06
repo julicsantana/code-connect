@@ -185,3 +185,4 @@
 {"level":"info","message":"Post obtido com sucesso!"}
 {"level":"info","message":"Post obtido com sucesso!"}
 {"level":"info","message":"Post obtido com sucesso!"}
+{"level":"error","message":"Ops, alguma coisa ocorreu: fetch failed"}

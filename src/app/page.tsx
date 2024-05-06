@@ -3,20 +3,41 @@ import logger from "@/loggers";
 import Post from "@/models/Post";
 import styles from "./page.module.css";
 import Link from "next/link";
+import db from "../../prisma/db";
 
 async function getAllPosts(page: number) {
   try {
-    const response = await fetch(
-      `http://localhost:3042/posts?_page=${page}&_per_page=6`
-    );
-    if (!response.ok) throw new Error("Falha na rede");
+    const posts: any = await db.post.findMany({
+      include: {
+        author: true,
+      },
+    });
 
-    logger.info("Posts obtidos com sucesso!");
-    return response.json();
+    return {
+      data: posts,
+      prev: null,
+      next: null,
+    };
   } catch (error: any) {
-    logger.error("Ops, alguma coisa ocorreu: " + error.message);
-    return [];
+    logger.error("Falha ao obter posts: " + error.message);
+    return {
+      data: [],
+      prev: null,
+      next: null,
+    };
   }
+  // try {
+  //   const response = await fetch(
+  //     `http://localhost:3042/posts?_page=${page}&_per_page=6`
+  //   );
+  //   if (!response.ok) throw new Error("Falha na rede");
+
+  //   logger.info("Posts obtidos com sucesso!");
+  //   return response.json();
+  // } catch (error: any) {
+  //   logger.error("Ops, alguma coisa ocorreu: " + error.message);
+  //   return [];
+  // }
 }
 
 export default async function Home({

@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+}
+
+.title {
+  color: #81fe88;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  margin: 0;
+  color: #bcbcbc;
+}
+
+.link {
+  color: #81fe88;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+}
