@@ -12,3 +12,8 @@ body {
   gap: 28px;
   min-height: calc(100vh - 112px);
 }
+
+::backdrop {
+  background-color: #171d1f;
+  opacity: 0.8;
+}

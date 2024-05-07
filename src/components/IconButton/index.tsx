@@ -7,7 +7,8 @@ export const IconButton = ({
   ...rest
 }: {
   children: ReactNode;
-  disabled: boolean;
+  disabled?: boolean;
+  [key: string]: any;
 }) => {
   return (
     <button disabled={disabled} {...rest} className={styles.btn}>

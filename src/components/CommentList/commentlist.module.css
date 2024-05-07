@@ -1,0 +1,15 @@
+.list {
+  padding-left: 0;
+}
+
+.itemList {
+  text-decoration: none;
+  list-style: none;
+  font-size: 15px;
+}
+
+.divider {
+  margin: 16px 0;
+  border: 1px solid #3e3e3f;
+  /* background: #3e3e3f; */
+}

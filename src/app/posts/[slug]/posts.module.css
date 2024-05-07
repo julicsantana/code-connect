@@ -1,0 +1,13 @@
+.comentarios {
+  background: #888888;
+  padding: 32px;
+  margin-top: 40px;
+  border-radius: 8px;
+  gap: 10px;
+  color: #171d1f;
+}
+
+.comentarios h2 {
+  font-size: 22px;
+  margin-top: 0;
+}

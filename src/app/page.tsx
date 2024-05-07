@@ -31,6 +31,11 @@ async function getAllPosts(page: number, searchTerm: string) {
       orderBy: { id: "desc" },
       include: {
         author: true,
+        comments: {
+          where: {
+            parentId: null,
+          },
+        },
       },
     });
 

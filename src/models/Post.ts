@@ -1,3 +1,6 @@
+import Author from "./Author";
+import Comment from "./Comment";
+
 export default interface Post {
   id: number;
   cover: string;
@@ -5,13 +8,9 @@ export default interface Post {
   slug: string;
   body: string;
   markdown: string;
+  createdAt: any;
+  updatedAt: any;
   author: Author;
   likes: number;
-}
-
-export interface Author {
-  id: number;
-  name: string;
-  username: string;
-  avatar: string;
+  comments: Comment[];
 }

@@ -3,11 +3,9 @@ import Post from "@/models/Post";
 import { Avatar } from "../Avatar";
 import styles from "./card-post.module.css";
 import Link from "next/link";
-import { ThumbsUp } from "../icons/ThumbsUp";
-import { Chat } from "../icons/Chat";
-import { IconButton } from "../IconButton";
 import { incrementThumbsUp } from "@/actions";
 import { ThumbsUpButton } from "./ThumbsUpButton";
+import { ModalComment } from "../ModalComment";
 
 export const CardPost = ({ post }: { post: Post }) => {
   const submitThumbsUp = incrementThumbsUp.bind(null, post);
@@ -36,8 +34,12 @@ export const CardPost = ({ post }: { post: Post }) => {
           <div>
             <form action={submitThumbsUp}>
               <ThumbsUpButton />
+              {post.likes}
             </form>
-            {post.likes}
+          </div>
+          <div>
+            <ModalComment post={post} />
+            {post.comments.length}
           </div>
         </div>
         <Avatar imageSrc={post.author.avatar} name={post.author.username} />
