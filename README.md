@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Projeto Next.js 14 com Docker, Prisma e PostgreSQL
 
-## Getting Started
+Este é um projeto Next.js 14 que utiliza Docker para gerenciar o ambiente de desenvolvimento, Prisma como ORM e PostgreSQL como banco de dados.
 
-First, run the development server:
+## Requisitos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Certifique-se de ter o Docker instalado em sua máquina antes de prosseguir.
+
+## Instalação
+
+1. Clone este repositório em sua máquina local:
+
+```
+git clone https://github.com/julicsantana/code-connect.git
+cd code-connect
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências do projeto:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Configuração do Banco de Dados
 
-## Learn More
+Este projeto utiliza PostgreSQL como banco de dados e Docker para gerenciar o ambiente. Siga as instruções abaixo para configurar o ambiente de banco de dados:
 
-To learn more about Next.js, take a look at the following resources:
+1. Suba o ambiente do banco de dados PostgreSQL com Docker:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+docker-compose up -d
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Execute as migrations do Prisma para criar as tabelas necessárias:
 
-## Deploy on Vercel
+```
+npx prisma migrate dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Opcionalmente, você pode adicionar dados iniciais ao banco de dados executando as seeds:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npx prisma db seed --preview-feature
+```
+
+## Configuração do Arquivo .env
+
+O arquivo `.env` é usado para armazenar variáveis de ambiente sensíveis e personalizadas. Neste projeto, você deve configurar as seguintes variáveis:
+
+- `POSTGRES_PRISMA_URL`: Esta variável deve conter a URL de conexão com o banco de dados PostgreSQL para o Prisma.
+- `POSTGRES_URL_NON_POOLING`: Esta variável deve conter a URL de conexão com o banco de dados PostgreSQL para operações não agrupadas (non-pooling), como migrações e seeds.
+
+Certifique-se de configurar corretamente essas variáveis no arquivo `.env` para que a aplicação possa se conectar ao banco de dados corretamente.
+
+Exemplo de conteúdo do arquivo `.env`:
+
+## Executando a Aplicação
+
+Para iniciar o servidor Next.js, execute o seguinte comando:
+
+```
+npm run dev
+```
+
+A aplicação estará disponível em [http://localhost:3000](http://localhost:3000).
+
+## Comandos Disponíveis
+
+- `npm run dev`: Inicia o servidor de desenvolvimento do Next.js.
+- `npm run build`: Compila o projeto para produção.
+- `npm run start`: Inicia o servidor Next.js em produção.
+- `npm run prisma`: CLI do Prisma para execução de comandos relacionados ao banco de dados.
+
+## Estrutura do Projeto
+
+Aqui está a estrutura de diretórios do projeto:
+
+.
+├── prisma/ # Configurações e migrations do Prisma
+├── public/ # Arquivos estáticos públicos
+├── src/ # Código-fonte da aplicação
+│ ├── actions/ # Ações da aplicação
+│ ├── app/ # Componente principal da aplicação
+│ ├── components/ # Componentes React reutilizáveis
+│ ├── models/ # Modelos de dados da aplicação
+├── docker-compose.yml # Configurações do Docker Compose
+├── error.log # Arquivo de log de erros
+├── combined.log # Arquivo de log combinado
+├── .env # Arquivo de variáveis de ambiente
+├── package.json # Dependências e scripts do projeto
+└── README.md # Este arquivo
+
+## Contribuindo
+
+Sinta-se à vontade para contribuir com este projeto enviando pull requests ou abrindo novas issues.
+
+Este README.md fornece uma visão geral do projeto, os passos necessários para configurar e executar a aplicação, bem como informações sobre os comandos disponíveis e a estrutura do projeto. Sinta-se à vontade para adaptá-lo conforme necessário para o seu projeto específico.
