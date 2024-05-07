@@ -71,10 +71,11 @@ A aplicação estará disponível em [http://localhost:3000](http://localhost:30
 - `npm run start`: Inicia o servidor Next.js em produção.
 - `npm run prisma`: CLI do Prisma para execução de comandos relacionados ao banco de dados.
 
-## Estrutura do Projeto
+<!-- ## Estrutura do Projeto
 
 Aqui está a estrutura de diretórios do projeto:
 
+```
 .
 ├── prisma/ # Configurações e migrations do Prisma
 ├── public/ # Arquivos estáticos públicos
@@ -89,6 +90,7 @@ Aqui está a estrutura de diretórios do projeto:
 ├── .env # Arquivo de variáveis de ambiente
 ├── package.json # Dependências e scripts do projeto
 └── README.md # Este arquivo
+``` -->
 
 ## Contribuindo
 
